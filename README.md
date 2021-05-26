@@ -14,4 +14,5 @@ Bây giờ để đường đi đó có animation khi xuất hiện, rất đơn
 <br>
 <br>
 Thành quả như sau:
+<br>
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/26211549/119640311-afb62180-be42-11eb-9b8b-4f7d248d26df.gif)
