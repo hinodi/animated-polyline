@@ -1,4 +1,3 @@
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/26211549/119646417-57365280-be49-11eb-804f-db89ba064e55.gif)
 # animated-polyline
 ![final](https://user-images.githubusercontent.com/26211549/119631247-e8053200-be39-11eb-9b5f-0892fb1d21e4.gif)
 
@@ -43,7 +42,7 @@ Code:
 ```
 Kết quả:<br>
 <br>
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/26211549/119640311-afb62180-be42-11eb-9b8b-4f7d248d26df.gif)
+![step1](https://user-images.githubusercontent.com/26211549/119640311-afb62180-be42-11eb-9b8b-4f7d248d26df.gif)
 
 Phân tích code một chút, ở đây chúng ta có hàm `_animate` thực hiện thêm 1 tạo độ vào `state`, sau đó đợi `200ms` và gọi lại chính mình. Từ đó ta có một vòng lặp và tất cả các điểm được thêm một cách tuần tự vào `state`<br>
 <br>
@@ -129,7 +128,7 @@ Code:
 ```
 Kết quả:<br>
 <br>
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/26211549/119646437-5ef5f700-be49-11eb-80f9-4ccc149ae7b6.gif)
+![step2](https://user-images.githubusercontent.com/26211549/119646437-5ef5f700-be49-11eb-80f9-4ccc149ae7b6.gif)
 <br>
 Kết thúc phần 1.<br>
 Phần tiếp theo sẽ là cách để chúng ta có được animation mượt hơn nữa, và có thể áp dụng các hàm easing vào animation<br>
