@@ -46,12 +46,14 @@ Kết quả:<br>
 <br>
 ![step1](https://user-images.githubusercontent.com/26211549/119640311-afb62180-be42-11eb-9b8b-4f7d248d26df.gif)
 
-Phân tích code một chút, ở đây chúng ta có hàm `_animate` thực hiện thêm 1 tạo độ vào `state`, sau đó đợi `200ms` và gọi lại chính mình. Từ đó ta có một vòng lặp và tất cả các điểm được thêm một cách tuần tự vào `state`<br>
+Phân tích code một chút, ở đây chúng ta có hàm `_animate` thực hiện thêm 1 toạ độ vào `state`, sau đó đợi `200ms` và gọi lại chính mình. Từ đó ta có một vòng lặp và tất cả các điểm được thêm một cách tuần tự vào `state`<br>
 <br>
 Chúng ta có một kết quả có thể xem là tạm ổn, tuy nhiên chúng ta có thể làm nó tốt hơn nữa<br>
-Có thể nhận thấy, chúng ta chỉ thêm tuần tự các điểm, mà chưa quan tâm đến độ dài của đoạn thẳng nói từ điểm cuối cùng đến điểm chúng ta sắp thêm vào. Điều này dẫn đến, đối với các đoạn thẳng ngắn thì animation ổn, nhưng đối với những đoạn thẳng dài, animation hoàn toàn chưa được. Do một đoạn thẳng dài xuất hiện ngay lập tức, vẫn dẫn đến hiệu ứng chưa tốt<br>
+Có thể nhận thấy, chúng ta chỉ thêm tuần tự các điểm, mà chưa quan tâm đến `độ dài` của đoạn thẳng nói từ điểm cuối cùng đến điểm chúng ta sắp thêm vào.<br>
+Điều này dẫn đến, đối với các `đoạn thẳng ngắn thì animation ổn`, nhưng đối với những đoạn thẳng dài, animation hoàn toàn chưa được. Do một đoạn thẳng dài xuất hiện ngay lập tức, vẫn dẫn đến hiệu ứng chưa tốt<br>
 <br>
-Để giải quyết vấn đề này, ta có thể chia các đoạn thẳng dài thằng các đoạn thẳng nhỏ hơn, và thay thế một đoạn dài bằng nhiều đoạn nhỏ tương ứng. Chúng ta sẽ biến đổi mảng toạ độ ban đầu, thành một mãng toạ độ mới, với khoảng cách của các điểm liền kề luôn nhỏ hơn hoặc bằng một giá trị bất kỳ nào đó<br>
+Để giải quyết vấn đề này, ta có thể `chia các đoạn thẳng dài thành các đoạn thẳng nhỏ hơn`, và thay thế một đoạn dài bằng nhiều đoạn nhỏ tương ứng<br>
+Chúng ta sẽ biến đổi mảng toạ độ ban đầu, thành một mãng toạ độ mới, với khoảng cách của các điểm liền kề luôn nhỏ hơn hoặc bằng một giá trị bất kỳ nào đó<br>
 <br>
 Code:
 <br>
