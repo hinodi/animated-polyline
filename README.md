@@ -13,6 +13,24 @@ Ví dụ: chúng ta có một mảng 16 điểm, và khi nối 16 điểm này l
 Bây giờ để đường đi đó có animation khi xuất hiện, rất đơn giản: ta chỉ cần cho các đoạn thẳng xuất hiện tuần tự nhau, đoạn này xong, tiếp đến đoạn khác, không xuất hiện cùng lúc, là ta sẽ có 1 animation đơn giản
 <br>
 <br>
-Thành quả như sau:
+Code & Thành quả như sau:
 <br>
+```js
+  componentDidMount() {
+    this._animate();
+  }
+
+  _animate = () => {
+    if (this.index >= this.coords.length) return;
+
+    this.setState(
+      ({ renderedCoords }) => ({ renderedCoords: [...renderedCoords, this.coords[this.index]] }),
+      () => {
+        this.index++;
+        setTimeout(this._animate, 200);
+      }
+    );
+  };
+  
+```
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/26211549/119640311-afb62180-be42-11eb-9b8b-4f7d248d26df.gif)
