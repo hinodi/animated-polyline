@@ -130,4 +130,7 @@ Code:
 Kết quả:<br>
 <br>
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/26211549/119646437-5ef5f700-be49-11eb-80f9-4ccc149ae7b6.gif)
-
+<br>
+Kết thúc phần 1.<br>
+Phần tiếp theo sẽ là cách để chúng ta có được animation mượt hơn nữa, và có thể áp dụng các hàm easing vào animation<br>
+Hãy sao cho mình để ủng hộ mình viết tiếp phần tiếp theo nhé
