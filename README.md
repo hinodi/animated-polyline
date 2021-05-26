@@ -13,7 +13,7 @@ Ví dụ: chúng ta có một mảng 16 điểm, và khi nối 16 điểm này l
 Bây giờ để đường đi đó có animation khi xuất hiện, rất đơn giản: ta chỉ cần cho các đoạn thẳng xuất hiện tuần tự nhau, đoạn này xong, tiếp đến đoạn khác, không xuất hiện cùng lúc, là ta sẽ có 1 animation đơn giản
 <br>
 <br>
-Code & Thành quả như sau:
+Code & Kết quả như sau:
 <br>
 ```js
   componentDidMount() {
