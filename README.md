@@ -50,7 +50,7 @@ Phân tích code một chút, ở đây chúng ta có hàm `_animate` thực hi�
 Chúng ta có một kết quả có thể xem là tạm ổn, tuy nhiên chúng ta có thể làm nó tốt hơn nữa<br>
 Có thể nhận thấy, chúng ta chỉ thêm tuần tự các điểm, mà chưa quan tâm đến độ dài của đoạn thẳng nói từ điểm cuối cùng đến điểm chúng ta sắp thêm vào. Điều này dẫn đến, đối với các đoạn thẳng ngắn thì animation ổn, nhưng đối với những đoạn thẳng dài, animation hoàn toàn chưa được. Do một đoạn thẳng dài xuất hiện ngay lập tức, vẫn dẫn đến hiệu ứng chưa tốt<br>
 <br>
-Để giải quyết vấn đề này, ta có thể chia các đoạn thẳng dài thằng các đoạn thẳng nhỏ hơn, và thực hiện `state` thêm vào các đoạn thẳng nhỏ này. Chúng ta sẽ biến đổi mảng toạ độ ban đầu, thành một mãng toạ độ mới, với khoảng cách của các điểm liền kề luôn nhỏ hơn hoặc bằng một giá trị bất kỳ nào đó<br>
+Để giải quyết vấn đề này, ta có thể chia các đoạn thẳng dài thằng các đoạn thẳng nhỏ hơn, và thay thế một đoạn dài bằng nhiều đoạn nhỏ tương ứng. Chúng ta sẽ biến đổi mảng toạ độ ban đầu, thành một mãng toạ độ mới, với khoảng cách của các điểm liền kề luôn nhỏ hơn hoặc bằng một giá trị bất kỳ nào đó<br>
 <br>
 Code:
 <br>
