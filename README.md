@@ -49,7 +49,7 @@ Kết quả:<br>
 Phân tích code một chút, ở đây chúng ta có hàm `_animate` thực hiện thêm 1 toạ độ vào `state`, sau đó đợi `200ms` và gọi lại chính mình. Từ đó ta có một vòng lặp và tất cả các điểm được thêm một cách tuần tự vào `state`<br>
 <br>
 Chúng ta có một kết quả có thể xem là tạm ổn, tuy nhiên chúng ta có thể làm nó tốt hơn nữa<br>
-Có thể nhận thấy, chúng ta chỉ thêm tuần tự các điểm, mà chưa quan tâm đến `độ dài` của đoạn thẳng nói từ điểm cuối cùng đến điểm chúng ta sắp thêm vào.<br>
+Có thể nhận thấy, chúng ta chỉ thêm tuần tự các điểm, mà chưa quan tâm đến `độ dài` của đoạn thẳng nối từ điểm cuối cùng đến điểm chúng ta sắp thêm vào.<br>
 Điều này dẫn đến, đối với các `đoạn thẳng ngắn thì animation ổn`, nhưng đối với những đoạn thẳng dài, animation hoàn toàn chưa được. Do một đoạn thẳng dài xuất hiện ngay lập tức, vẫn dẫn đến hiệu ứng chưa tốt<br>
 <br>
 Để giải quyết vấn đề này, ta có thể `chia các đoạn thẳng dài thành các đoạn thẳng nhỏ hơn`, và thay thế một đoạn dài bằng nhiều đoạn nhỏ tương ứng<br>
@@ -62,9 +62,9 @@ Code:
     // giá trị tối đa của một đoạn thẳng
     const MAX_DISTANCE = 100;
 
-    // lưu danh sách độ sau khi biến lỗi
+    // lưu danh sách độ sau khi biến đổi
     const newCoords = [];
-    // ban đầu ta có toạ độ đầu tiên của danh sách toạ độ ban đầu
+    // ban đầu ta có toạ độ đầu tiên của danh sách toạ độ mới
     newCoords.push(this._coords[0]);
 
     // lặp qua tất cả các toạ độ
@@ -135,5 +135,4 @@ Kết quả:<br>
 ![step2](https://user-images.githubusercontent.com/26211549/119646437-5ef5f700-be49-11eb-80f9-4ccc149ae7b6.gif)
 <br>
 Kết thúc phần 1.<br>
-Phần tiếp theo sẽ là cách để chúng ta có được animation mượt hơn nữa, và có thể áp dụng các hàm easing vào animation<br>
-Hãy sao cho mình để ủng hộ mình viết tiếp phần tiếp theo nhé
+Phần tiếp theo sẽ là cách để chúng ta có được animation mượt hơn nữa, và có thể áp dụng các hàm easing vào animation
