@@ -1,22 +1,58 @@
-# animated-polyline
+# React Native - Hướng dẫn làm việc với polyline và animated-polyline trên Map
 ![final](https://user-images.githubusercontent.com/26211549/119631247-e8053200-be39-11eb-9b5f-0892fb1d21e4.gif)
 
-Lưu ý: bài viết sử dụng [react-native](https://reactnative.dev/) và [react-native-maps](https://github.com/react-native-maps/react-native-maps) để code mẫu
+Vẽ đường đi trên bản đồ là một nghiệp vụ vô cùng quan trọng các ứng dụng gọi xe, giao hàng, đặt món ăn trên thị trường hiện nay, có thể kể đến Grab, Now, Baemin, Be,… đều đang sử dụng chức năng này. Bài viết này sẽ hướng dẫn mọi người sử dụng React Native để vẽ đường đi trên bản đồ (Google Map) và tối ưu ứng dụng khi vẽ đường đi đó cùng với Animation (diễn hoạt).
 
-Để vẽ được 1 đường đi trên bản đồ ta phải có danh sách các toạ độ. Đường đi chúng ta muốn, chính là các đoạn thẳng nối các điểm liền kề trên danh sách toạ độ này
+## Polyline là gì?
+Polyline (đường đa tuyến) trong bản đồ (Google Map) là một tập hợp bao gồm nhiều điểm (point) và các đoạn thẳng nối các điểm liền kề. Mặc định, Polyline thường không được đóng hay khép kín. Để tạo thành một polyline khép kín, điểm đầu và điểm cuối phải giống nhau.<br>
 <br>
+Trong Google Maps, Polyline được sử dụng để vẽ lên bản đồ nhằm diễn đạt chỉ đường, phương hướng để đi được từ điểm này đến điểm khác.<br>
+
+## Cách vẽ Polyline trong React Native
+Để vẽ được 1 đường đi trên bản đồ, ta phải có danh sách các toạ độ. Đường đi ấy được tạo thành bởi nhiều đoạn thẳng nhỏ nối các điểm liền kề trên danh sách tọa độ này.<br>
 <br>
 Ví dụ: chúng ta có một mảng 16 điểm, và khi nối 16 điểm này lại (bằng 15 đoạn thẳng), ta có được đường đi
+Lưu ý: bài viết sử dụng [react-native](https://reactnative.dev/) và [react-native-maps](https://github.com/react-native-maps/react-native-maps) để code mẫu
 <br>
-![image](https://user-images.githubusercontent.com/26211549/119634476-fd2f9000-be3c-11eb-9b49-c3c495ce66cd.png)
+Code mẫu:
+```js
+  render() {
+    const coordinates = [
+      { latitude: 10.77309, longitude: 106.69835 },
+      { latitude: 10.77281, longitude: 106.69853 },
+      { latitude: 10.7731, longitude: 106.69882 },
+      { latitude: 10.77371, longitude: 106.69944 },
+      { latitude: 10.7734, longitude: 106.69978 },
+      { latitude: 10.7736, longitude: 106.7 },
+      { latitude: 10.77082, longitude: 106.70122 },
+      { latitude: 10.77056, longitude: 106.70618 },
+      { latitude: 10.76835, longitude: 106.7056 },
+      { latitude: 10.76246, longitude: 106.70838 },
+      { latitude: 10.75702, longitude: 106.71797 },
+      { latitude: 10.75184, longitude: 106.72482 },
+      { latitude: 10.75248, longitude: 106.72661 },
+      { latitude: 10.75263, longitude: 106.728 },
+      { latitude: 10.75238, longitude: 106.7284 },
+      { latitude: 10.74475, longitude: 106.72915 },
+    ];
+    return (
+      <MapView>
+        <MapView.Polyline coordinates={coordinates} />
+      </MapView>
+    );
+  }
+```
+
+Kết quả:<br>
 ![image](https://user-images.githubusercontent.com/26211549/119632148-bf316c80-be3a-11eb-845d-83c239234983.png)
+
+
+## Cách vẽ Polyline với Animation (diễn hoạt)
+
+Bây giờ để polyline đó có animation khi xuất hiện, rất đơn giản: ta chỉ cần cho các đoạn thẳng xuất hiện tuần tự nhau, đoạn này xong, tiếp đến đoạn khác, không xuất hiện cùng lúc, là ta sẽ có 1 animation đơn giản
 <br>
-<br>
-Bây giờ để đường đi đó có animation khi xuất hiện, rất đơn giản: ta chỉ cần cho các đoạn thẳng xuất hiện tuần tự nhau, đoạn này xong, tiếp đến đoạn khác, không xuất hiện cùng lúc, là ta sẽ có 1 animation đơn giản
-<br>
-<br>
-Code:
-<br>
+
+Code mẫu:
 ```js
   componentDidMount() {
     this._animate();
@@ -43,20 +79,17 @@ Code:
   }
 ```
 Kết quả:<br>
-<br>
 ![step1](https://user-images.githubusercontent.com/26211549/119640311-afb62180-be42-11eb-9b8b-4f7d248d26df.gif)
 
-Phân tích code một chút, ở đây chúng ta có hàm `_animate` thực hiện thêm 1 toạ độ vào `state`, sau đó đợi `200ms` và gọi lại chính mình. Từ đó ta có một vòng lặp và tất cả các điểm được thêm một cách tuần tự vào `state`<br>
+Phân tích code một chút, ở đây chúng ta có hàm `_animate` thực hiện thêm 1 toạ độ vào `state`, sau đó đợi `200ms` và gọi lại chính mình. Từ đó ta có một vòng lặp và tất cả các điểm được thêm một cách tuần tự vào `state`. Kết quả nhận được có thể xem là tạm ổn, tuy nhiên chúng ta có thể làm nó tốt hơn nữa<br>
 <br>
-Chúng ta có một kết quả có thể xem là tạm ổn, tuy nhiên chúng ta có thể làm nó tốt hơn nữa<br>
 Có thể nhận thấy, chúng ta chỉ thêm tuần tự các điểm, mà chưa quan tâm đến `độ dài` của đoạn thẳng nối từ điểm cuối cùng đến điểm chúng ta sắp thêm vào.<br>
-Điều này dẫn đến, đối với các `đoạn thẳng ngắn thì animation ổn`, nhưng đối với những đoạn thẳng dài, animation hoàn toàn chưa được. Do một đoạn thẳng dài xuất hiện ngay lập tức, vẫn dẫn đến hiệu ứng chưa tốt<br>
+Ví thế, đối với các `đoạn thẳng ngắn thì animation ổn`, nhưng đối với những đoạn thẳng dài thì chưa được vì chúng xuất hiện ngay lập tức<br>
 <br>
 Để giải quyết vấn đề này, ta có thể `chia các đoạn thẳng dài thành các đoạn thẳng nhỏ hơn`, và thay thế một đoạn dài bằng nhiều đoạn nhỏ tương ứng<br>
 Chúng ta sẽ biến đổi mảng toạ độ ban đầu, thành một mãng toạ độ mới, với khoảng cách của các điểm liền kề luôn nhỏ hơn hoặc bằng một giá trị bất kỳ nào đó<br>
 <br>
-Code:
-<br>
+Code React Native mẫu sẽ như sau:
 ```js
   componentDidMount() {
     // giá trị tối đa của một đoạn thẳng
@@ -106,7 +139,6 @@ Code:
 
     this._coords = newCoords;
 
-    this._handleDrawPath();
     this._animate();
   }
   
